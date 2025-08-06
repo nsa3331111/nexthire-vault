@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free ATS Scan Submitted - NextHire Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Same styling as free-scan.html */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc; line-height: 1.6; min-height: 100vh;
+        }
+        .success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .success-container {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px;
+            padding: 3rem; max-width: 600px; text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .success-icon { font-size: 5rem; margin-bottom: 1.5rem; animation: bounce 1s ease-out; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: #10b981; }
+        .cta-button {
+            background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+            color: white; padding: 20px 40px; text-decoration: none;
+            border-radius: 12px; display: inline-block; font-weight: 700;
+            margin: 20px 0; transition: all 0.3s ease; font-size: 1.2rem;
+        }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-container">
+            <div class="success-icon">📧</div>
+            <h1>Scan Results Sent!</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #94a3b8;">
+                Check your email in the next 2 minutes for your detailed ATS scan results.
+            </p>
+            
+            <div style="background: rgba(220, 38, 38, 0.1); border: 2px solid rgba(220, 38, 38, 0.3); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                <h3 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Spoiler Alert:</h3>
+                <p style="font-size: 1.1rem;">Most resumes have 5-7 critical errors that cause instant ATS rejection. The good news? They're all fixable in under 30 minutes with the right templates.</p>
+            </div>
+
+            <a href="https://nexthire-vault.netlify.app/" class="cta-button">
+                🔓 Skip the Wait - Get NextHire Vault Now ($197)
+            </a>
+            
+            <p style="margin-top: 2rem; color: #94a3b8;">
+                <strong>Don't see the email?</strong> Check your spam folder or email us at 
+                <a href="mailto:nexthire.vault@gmail.com" style="color: #10b981;">nexthire.vault@gmail.com</a>
+            </p>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #64748b; font-size: 0.9rem;">
+                    While you wait, follow us for daily ATS tips: 
+                    <a href="#" style="color: #3b82f6;">LinkedIn</a> | 
+                    <a href="#" style="color: #3b82f6;">Twitter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track successful form submission
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                'value': 97,
+                'currency': 'USD'
+            });
+        }
+        console.log('📧 Free scan form submitted successfully');
+    </script>
+</body>
+</html>

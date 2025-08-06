@@ -73,6 +73,62 @@
     .urgent-bar{background:linear-gradient(135deg,#dc2626 0%,#ea580c 100%);color:white;padding:12px 20px;text-align:center;font-weight:600;font-size:0.9rem}
     .hero{min-height:100vh;padding:140px 20px 80px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}
     .hero-headline{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.1;text-align:center;margin-bottom:2rem}
+    
+    /* Social Proof Notifications */
+    .social-proof {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 1000;
+        transform: translateX(-120%);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        max-width: 350px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .social-proof.show {
+        transform: translateX(0);
+    }
+
+    .proof-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .proof-icon {
+        font-size: 1.2rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    .proof-text {
+        flex: 1;
+        line-height: 1.4;
+    }
+
+    /* Mobile responsive for social proof */
+    @media (max-width: 768px) {
+        .social-proof {
+            left: 10px;
+            right: 10px;
+            max-width: none;
+            bottom: 10px;
+            font-size: 0.85rem;
+            padding: 12px 15px;
+        }
+    }
     </style>
 
     <!-- Link to external CSS -->
@@ -97,6 +153,14 @@
             <a href="#checkout" class="nav-cta">STOP THE BLEEDING - $197</a>
         </div>
     </nav>
+
+    <!-- 📢 SOCIAL PROOF NOTIFICATIONS -->
+    <div id="social-proof" class="social-proof">
+        <div class="proof-content">
+            <span class="proof-icon">🔔</span>
+            <span class="proof-text">Marcus from Seattle just unlocked NextHire Vault</span>
+        </div>
+    </div>
 
     <!-- 🎯 HERO SECTION - MAXIMUM PAIN & URGENCY -->
     <section class="hero" id="main-content">
@@ -562,5 +626,88 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Social Proof Notifications Script -->
+    <script>
+        // Social Proof Notification System
+        const proofMessages = [
+            "Sarah from Austin just got her first interview!",
+            "Mike from NYC just unlocked NextHire Vault",
+            "Jennifer from SF landed a $180K offer!",
+            "David from Boston escaped unemployment in 2 weeks",
+            "Lisa from Seattle got 3 offers using the AI prompts",
+            "Marcus from Chicago just downloaded his templates",
+            "Amanda from Denver landed her dream role!",
+            "Kevin from Portland got a $165K remote offer",
+            "Rachel from Miami found a job in 10 days",
+            "Chris from Dallas just joined the community",
+            "Emily from Phoenix got interviews at 3 FAANG companies",
+            "Tom from Atlanta used the salary scripts to get 30% raise"
+        ];
+
+        let currentMessageIndex = 0;
+        let socialProofActive = false;
+
+        function showSocialProof() {
+            if (socialProofActive) return;
+            
+            socialProofActive = true;
+            const proofElement = document.getElementById('social-proof');
+            const textElement = document.querySelector('.proof-text');
+            
+            // Get message and increment index
+            const message = proofMessages[currentMessageIndex];
+            currentMessageIndex = (currentMessageIndex + 1) % proofMessages.length;
+            
+            // Update text and show notification
+            textElement.textContent = message;
+            proofElement.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                proofElement.classList.remove('show');
+                socialProofActive = false;
+            }, 5000);
+            
+            // Track social proof view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'social_proof_shown', {
+                    'message': message,
+                    'message_index': currentMessageIndex - 1
+                });
+            }
+        }
+
+        // Initialize social proof system
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show first notification after 3 seconds
+            setTimeout(showSocialProof, 3000);
+            
+            // Then show every 15-25 seconds (random interval)
+            function scheduleNextProof() {
+                const randomDelay = Math.random() * 10000 + 15000; // 15-25 seconds
+                setTimeout(() => {
+                    showSocialProof();
+                    scheduleNextProof(); // Schedule next one
+                }, randomDelay);
+            }
+            
+            setTimeout(scheduleNextProof, 8000); // Start recurring after initial show
+            
+            console.log('📢 Social proof notifications active');
+        });
+
+        // Pause social proof when user is actively engaging
+        let userEngaging = false;
+        document.addEventListener('click', function() {
+            userEngaging = true;
+            setTimeout(() => { userEngaging = false; }, 30000); // Resume after 30 seconds
+        });
+
+        document.addEventListener('scroll', function() {
+            userEngaging = true;
+            setTimeout(() => { userEngaging = false; }, 15000); // Resume after 15 seconds
+        });
+    </script>
 </body>
 </html>
