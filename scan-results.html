@@ -3,78 +3,1058 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free ATS Scan Submitted - NextHire Vault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>✅ Success! Your ATS Survival Kit is Ready | NextHire Vault</title>
+    <meta name="description" content="Your free ATS Survival Kit has been sent! Start fixing your resume now and get interviews within 7 days.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PB2C5X84V4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PB2C5X84V4');
+        
+        // Track successful lead conversion
+        gtag('event', 'lead', {
+            'value': 197,
+            'currency': 'USD',
+            'lead_source': 'ATS Survival Kit',
+            'page_location': window.location.href
+        });
+        
+        // Track thank you page view
+        gtag('event', 'sign_up', {
+            'method': 'email',
+            'value': 197,
+            'page_type': 'thank_you'
+        });
+        
+        // Track conversion funnel step
+        gtag('event', 'page_view', {
+            'page_title': 'Thank You - ATS Kit Delivered',
+            'page_location': window.location.href,
+            'value': 197,
+            'currency': 'USD',
+            'funnel_step': 'lead_captured'
+        });
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* Same styling as free-scan.html */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-red: #dc2626;
+            --primary-orange: #ea580c;
+            --success-green: #10b981;
+            --warning-yellow: #f59e0b;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --text-white: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc; line-height: 1.6; min-height: 100vh;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .success-container {
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px;
-            padding: 3rem; max-width: 600px; text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+        /* Success Header */
+        .success-header {
+            background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            animation: success-glow 2s ease-in-out infinite;
         }
-        .success-icon { font-size: 5rem; margin-bottom: 1.5rem; animation: bounce 1s ease-out; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: #10b981; }
-        .cta-button {
-            background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-            color: white; padding: 20px 40px; text-decoration: none;
-            border-radius: 12px; display: inline-block; font-weight: 700;
-            margin: 20px 0; transition: all 0.3s ease; font-size: 1.2rem;
+
+        @keyframes success-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5); }
         }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4); }
+
+        /* Main Container */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Success Section */
+        .success-section {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .success-icon {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            animation: success-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes success-bounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .success-headline {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--success-green) 0%, var(--warning-yellow) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .personalized-greeting {
+            font-size: 1.8rem;
+            color: var(--warning-yellow);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .success-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        /* Email Buttons */
+        .email-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .email-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .email-btn.gmail {
+            background: #ea4335;
+        }
+
+        .email-btn.outlook {
+            background: #0078d4;
+        }
+
+        .email-btn.yahoo {
+            background: #6001d2;
+        }
+
+        .email-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .steps-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--success-green);
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--success-green);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            background: var(--success-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-white);
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Upsell Section */
+        .upsell-section {
+            background: linear-gradient(135deg, var(--dark-card) 0%, #334155 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 3px solid var(--warning-yellow);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: upsell-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes upsell-glow {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 20px 80px rgba(245, 158, 11, 0.3); }
+        }
+
+        .upsell-badge {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--warning-yellow);
+            color: var(--dark-bg);
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .upsell-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-white);
+        }
+
+        .upsell-subtitle {
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-card.premium {
+            border-color: var(--warning-yellow);
+            background: rgba(245, 158, 11, 0.1);
+            transform: scale(1.05);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .card-price {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price-old {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+            margin-right: 10px;
+        }
+
+        .price-new {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--warning-yellow);
+        }
+
+        .card-features {
+            list-style: none;
+        }
+
+        .card-features li {
+            padding: 10px 0;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-features li:last-child {
+            border-bottom: none;
+        }
+
+        .card-features li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        .card-features li.premium::before {
+            content: '🔥';
+        }
+
+        /* Testimonial in Upsell */
+        .upsell-testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--warning-yellow);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .upsell-testimonial-text {
+            font-size: 1.15rem;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .upsell-testimonial-author {
+            font-weight: 700;
+            color: var(--warning-yellow);
+        }
+
+        /* Urgency Timer */
+        .urgency-timer {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid var(--primary-red);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+            animation: timer-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes timer-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(220, 38, 38, 0.4); }
+        }
+
+        .timer-title {
+            color: var(--primary-orange);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .timer-unit {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--primary-red);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 70px;
+        }
+
+        .timer-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-orange);
+            display: block;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* CTA Button */
+        .upgrade-btn {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
+            background: linear-gradient(135deg, var(--warning-yellow) 0%, #d97706 100%);
+            color: var(--dark-bg);
+            padding: 25px 40px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upgrade-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .upgrade-btn:hover::before {
+            left: 100%;
+        }
+
+        .upgrade-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Security Badges */
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Floating Reminder */
+        .floating-reminder {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            max-width: 350px;
+        }
+
+        .floating-reminder.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .success-headline {
+                font-size: 2rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .comparison-card.premium {
+                transform: scale(1);
+            }
+            
+            .timer-display {
+                gap: 10px;
+            }
+            
+            .floating-reminder {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="success-page">
-        <div class="success-container">
-            <div class="success-icon">📧</div>
-            <h1>Scan Results Sent!</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #94a3b8;">
-                Check your email in the next 2 minutes for your detailed ATS scan results.
+    <!-- Success Header -->
+    <div class="success-header">
+        ✅ SUCCESS! Your ATS Survival Kit has been sent to your email
+    </div>
+
+    <div class="main-container">
+        <!-- Success Section -->
+        <section class="success-section">
+            <div class="success-icon">🎉</div>
+            <h1 class="personalized-greeting" id="greeting">Welcome to the 3%</h1>
+            <h2 class="success-headline">Who Actually Fix Their Resume!</h2>
+            <p class="success-subtitle">
+                Your free ATS Survival Kit is waiting in your inbox.<br>
+                <strong>Most people download it and do nothing. Don't be most people.</strong>
             </p>
             
-            <div style="background: rgba(220, 38, 38, 0.1); border: 2px solid rgba(220, 38, 38, 0.3); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                <h3 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Spoiler Alert:</h3>
-                <p style="font-size: 1.1rem;">Most resumes have 5-7 critical errors that cause instant ATS rejection. The good news? They're all fixable in under 30 minutes with the right templates.</p>
+            <!-- Quick Email Access Buttons -->
+            <div class="email-buttons">
+                <a href="https://gmail.com" target="_blank" class="email-btn gmail" onclick="trackEmailClick('gmail')">Open Gmail</a>
+                <a href="https://outlook.com" target="_blank" class="email-btn outlook" onclick="trackEmailClick('outlook')">Open Outlook</a>
+                <a href="https://mail.yahoo.com" target="_blank" class="email-btn yahoo" onclick="trackEmailClick('yahoo')">Open Yahoo</a>
+            </div>
+            
+            <p style="color: var(--text-muted); margin-top: 20px;">
+                ⚠️ <strong>Important:</strong> Check spam/promotions if you don't see it in 2 minutes
+            </p>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="next-steps">
+            <h2 class="steps-title">🚀 Your 30-Minute Resume Resurrection Plan</h2>
+            
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Check Your Email NOW (2 min)</h3>
+                    <p>Open the email titled "Your ATS Survival Kit." If it's not there in 2 minutes, check spam and whitelist nexthire@gmail.com</p>
+                </div>
             </div>
 
-            <a href="https://nexthire-vault.netlify.app/" class="cta-button">
-                🔓 Skip the Wait - Get NextHire Vault Now ($197)
-            </a>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Run the 47-Point Checklist (10 min)</h3>
+                    <p>This checklist finds EVERY ATS trap in your resume. Most people find 7-10 critical errors they never knew existed.</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Fix the Top 5 Killers (5 min)</h3>
+                    <p>Headers/footers, fancy bullets, columns, tables, wrong file type. Fix just these and you'll beat 50% of applicants.</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Use the ChatGPT Prompts (10 min)</h3>
+                    <p>Transform your weakest bullets into achievements that make recruiters stop scrolling. Each prompt is tested and proven.</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Apply to 5 Jobs TODAY (3 min)</h3>
+                    <p>Test your newly optimized resume immediately. You should see callbacks within 48-72 hours.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upsell Section -->
+        <section class="upsell-section" id="upsellSection">
+            <div class="upsell-badge">⚡ ONE-TIME OFFER</div>
             
-            <p style="margin-top: 2rem; color: #94a3b8;">
-                <strong>Don't see the email?</strong> Check your spam folder or email us at 
-                <a href="mailto:nexthire.vault@gmail.com" style="color: #10b981;">nexthire.vault@gmail.com</a>
+            <h2 class="upsell-title">Ready to Go From Callbacks to OFFERS?</h2>
+            <p class="upsell-subtitle">
+                The free kit gets you noticed. The Complete Vault gets you HIRED with leverage.
             </p>
 
-            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p style="color: #64748b; font-size: 0.9rem;">
-                    While you wait, follow us for daily ATS tips: 
-                    <a href="#" style="color: #3b82f6;">LinkedIn</a> | 
-                    <a href="#" style="color: #3b82f6;">Twitter</a>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3 class="card-title" style="color: var(--success-green);">What You Just Got</h3>
+                    <div class="card-price">
+                        <span class="price-new" style="color: var(--success-green); font-size: 2rem;">FREE</span>
+                    </div>
+                    <ul class="card-features">
+                        <li>47-Point ATS Checklist</li>
+                        <li>1 Basic Template</li>
+                        <li>5 ChatGPT Prompts</li>
+                        <li>Quick Start Guide</li>
+                        <li>Email Support</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card premium">
+                    <h3 class="card-title" style="color: var(--warning-yellow);">Complete NextHire Vault</h3>
+                    <div class="card-price">
+                        <span class="price-old">$497</span>
+                        <span class="price-new">$197</span>
+                    </div>
+                    <ul class="card-features">
+                        <li>Everything in Free Kit</li>
+                        <li class="premium">12 Role-Specific Templates</li>
+                        <li class="premium">50+ Advanced AI Prompts</li>
+                        <li class="premium">500+ Interview Q&A Bank</li>
+                        <li class="premium">Salary Negotiation Scripts</li>
+                        <li class="premium">Cover Letter Generator</li>
+                        <li class="premium">LinkedIn Optimization</li>
+                        <li class="premium">Lifetime Updates</li>
+                        <li class="premium">Private Slack Community</li>
+                        <li class="premium">14-Day Success Guarantee</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="upsell-testimonial">
+                <div class="upsell-testimonial-text">
+                    "The free checklist got me callbacks. But the Complete Vault? Got me 3 competing offers and I negotiated a $45K raise. The salary scripts alone paid for this 100x over."
+                </div>
+                <div class="upsell-testimonial-author">— Marcus Chen, Senior Engineer (went from $140K → $185K)</div>
+            </div>
+
+            <!-- Urgency Timer -->
+            <div class="urgency-timer">
+                <div class="timer-title">⏰ Your Special Pricing Expires In:</div>
+                <div class="timer-display">
+                    <div class="timer-unit">
+                        <span class="timer-number" id="days">02</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="hours">23</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="minutes">47</span>
+                        <span class="timer-label">Min</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-number" id="seconds">32</span>
+                        <span class="timer-label">Sec</span>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: var(--text-gray);">
+                    After this, the price goes to $497. This offer won't be repeated.
                 </p>
             </div>
+
+            <a href="https://paypal.me/eltarion/197USD" target="_blank" class="upgrade-btn" onclick="trackUpgrade()">
+                🔓 Unlock Complete Vault - Save $300 Today
+            </a>
+
+            <div class="security-badges">
+                <div class="security-badge">
+                    <span>🔒</span> 256-bit SSL Security
+                </div>
+                <div class="security-badge">
+                    <span>⚡</span> Instant Digital Delivery
+                </div>
+                <div class="security-badge">
+                    <span>🛡️</span> 14-Day Money-Back Guarantee
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                <strong>My Promise:</strong> Get 3+ interviews in 14 days or I'll refund every penny<br>
+                PLUS personally coach you until you land your dream role.
+            </p>
+        </section>
+
+        <!-- Another Success Story -->
+        <div class="upsell-testimonial" style="margin: 40px 0;">
+            <div class="upsell-testimonial-text">
+                "6 months unemployed. Downloaded the free kit Monday. Fixed my resume. Got 2 callbacks by Thursday. Bought the full vault Friday. Had 3 offers by the following week. Now making $207K at Microsoft. This system is unreal."
+            </div>
+            <div class="upsell-testimonial-author">— David Kim, Principal Engineer</div>
         </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-text">
+                <p>© 2025 NextHire Vault. Built by laid-off tech workers, for laid-off tech workers.</p>
+                <p style="margin-top: 10px;">
+                    <a href="mailto:support@nexthirevault.com" style="color: var(--text-muted);">Contact Support</a> • 
+                    <a href="#" style="color: var(--text-muted);">Privacy Policy</a> • 
+                    <a href="#" style="color: var(--text-muted);">Terms</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Reminder -->
+    <div class="floating-reminder" id="floatingReminder">
+        📧 Don't forget to check your email for the survival kit!
     </div>
 
     <script>
-        // Track successful form submission
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-                'value': 97,
-                'currency': 'USD'
+        // Enhanced Analytics for Thank You Page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Personalization
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            const leadTime = localStorage.getItem('leadCaptureTime');
+            
+            if (userName) {
+                document.getElementById('greeting').textContent = `${userName}, Welcome to the 3%`;
+                
+                // Track personalized view
+                gtag('event', 'personalized_content', {
+                    'user_name': userName,
+                    'content_type': 'thank_you_greeting'
+                });
+            }
+            
+            console.log(`Thank you page loaded for: ${userName || 'Anonymous'}`);
+            
+            // Track upsell view when it becomes visible
+            const upsellSection = document.getElementById('upsellSection');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gtag('event', 'view_item', {
+                            'currency': 'USD',
+                            'value': 197,
+                            'items': [{
+                                'item_id': 'NEXTHIRE_VAULT_COMPLETE',
+                                'item_name': 'NextHire Vault Complete Package',
+                                'price': 197,
+                                'item_category': 'Digital Product',
+                                'discount': 300
+                            }]
+                        });
+                        
+                        gtag('event', 'view_promotion', {
+                            'promotion_id': 'LAUNCH_WEEK',
+                            'promotion_name': 'Launch Week Special',
+                            'creative_name': 'Thank You Page Upsell',
+                            'creative_slot': 'main_upsell',
+                            'items': [{
+                                'item_id': 'NEXTHIRE_VAULT_COMPLETE',
+                                'item_name': 'NextHire Vault Complete',
+                                'price': 197
+                            }]
+                        });
+                        
+                        console.log('📊 Upsell view tracked');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (upsellSection) {
+                observer.observe(upsellSection);
+            }
+            
+            // Track time on page for engagement
+            let timeOnPage = 0;
+            const timeInterval = setInterval(() => {
+                timeOnPage += 10;
+                
+                if (timeOnPage === 30) {
+                    gtag('event', 'engaged_user', {
+                        'engagement_time_seconds': 30,
+                        'page_title': 'Thank You Page',
+                        'has_upsell': true
+                    });
+                }
+                
+                if (timeOnPage === 60) {
+                    gtag('event', 'highly_engaged_user', {
+                        'engagement_time_seconds': 60,
+                        'page_title': 'Thank You Page',
+                        'conversion_potential': 'high'
+                    });
+                }
+            }, 10000); // Every 10 seconds
+            
+            // Clear interval when user leaves
+            window.addEventListener('beforeunload', () => {
+                clearInterval(timeInterval);
             });
+        });
+
+        // Track email button clicks
+        function trackEmailClick(provider) {
+            gtag('event', 'email_provider_click', {
+                'provider': provider,
+                'action': 'check_email',
+                'page': 'thank_you'
+            });
+            console.log(`📧 ${provider} email click tracked`);
         }
-        console.log('📧 Free scan form submitted successfully');
+
+        // Enhanced upgrade tracking
+        function trackUpgrade() {
+            console.log('🎯 Upgrade button clicked');
+            
+            // Track as begin_checkout
+            gtag('event', 'begin_checkout', {
+                'currency': 'USD',
+                'value': 197,
+                'items': [{
+                    'item_id': 'NEXTHIRE_VAULT_COMPLETE',
+                    'item_name': 'NextHire Vault Complete Package',
+                    'affiliation': 'NextHire Vault',
+                    'discount': 300,
+                    'item_category': 'Resume Package',
+                    'price': 197,
+                    'quantity': 1
+                }],
+                'checkout_option': 'PayPal',
+                'checkout_step': 1
+            });
+            
+            // Track as select_promotion
+            gtag('event', 'select_promotion', {
+                'promotion_id': 'LAUNCH_WEEK',
+                'promotion_name': 'Launch Week Special',
+                'creative_name': 'Thank You Page Upsell',
+                'creative_slot': 'main_upsell',
+                'items': [{
+                    'item_id': 'NEXTHIRE_VAULT_COMPLETE',
+                    'item_name': 'NextHire Vault Complete',
+                    'price': 197
+                }]
+            });
+            
+            // Track purchase intent
+            gtag('event', 'purchase_intent', {
+                'value': 197,
+                'currency': 'USD',
+                'intent_strength': 'high',
+                'source': 'thank_you_upsell'
+            });
+            
+            // Store purchase intent for retargeting
+            localStorage.setItem('purchaseIntent', 'true');
+            localStorage.setItem('purchaseIntentTime', new Date().toISOString());
+        }
+
+        // Countdown Timer with persistence
+        function initCountdown() {
+            // Check if timer already exists
+            let endTime = localStorage.getItem('offerEndTime');
+            
+            if (!endTime) {
+                // Set countdown for 3 days from now
+                endTime = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
+                localStorage.setItem('offerEndTime', endTime);
+            }
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.querySelector('.urgency-timer').innerHTML = 
+                        '<div style="color: var(--primary-red); font-size: 1.5rem; font-weight: 700;">Offer Expired - Regular Price Now Active</div>';
+                    
+                    // Track offer expiration
+                    gtag('event', 'offer_expired', {
+                        'offer_name': 'Launch Week Special',
+                        'original_price': 497,
+                        'special_price': 197
+                    });
+                    
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                // Track urgency milestones
+                if (days === 0 && hours === 23 && minutes === 59) {
+                    gtag('event', 'urgency_milestone', {
+                        'milestone': '24_hours_left',
+                        'offer_value': 197
+                    });
+                }
+                
+                if (days === 0 && hours === 0 && minutes === 59) {
+                    gtag('event', 'urgency_milestone', {
+                        'milestone': '1_hour_left',
+                        'offer_value': 197
+                    });
+                }
+            }
+            
+            const countdownTimer = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+        
+        initCountdown();
+
+        // Show email reminder after 30 seconds
+        setTimeout(function() {
+            const reminder = document.getElementById('floatingReminder');
+            reminder.classList.add('show');
+            
+            gtag('event', 'reminder_shown', {
+                'reminder_type': 'email_check',
+                'delay_seconds': 30
+            });
+            
+            setTimeout(() => {
+                reminder.classList.remove('show');
+            }, 5000);
+        }, 30000);
+
+        // Show another reminder after 2 minutes
+        setTimeout(function() {
+            const reminder = document.getElementById('floatingReminder');
+            reminder.textContent = '💡 Pro tip: Fix the header/footer issue first - it\'s killing 40% of resumes';
+            reminder.classList.add('show');
+            
+            gtag('event', 'reminder_shown', {
+                'reminder_type': 'pro_tip',
+                'delay_seconds': 120
+            });
+            
+            setTimeout(() => {
+                reminder.classList.remove('show');
+            }, 5000);
+        }, 120000);
+
+        // Exit intent tracking
+        let exitIntentShown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !exitIntentShown) {
+                exitIntentShown = true;
+                
+                // Track exit intent
+                gtag('event', 'exit_intent', {
+                    'page': 'thank_you',
+                    'has_seen_upsell': true,
+                    'time_on_page': Math.floor((Date.now() - performance.timing.navigationStart) / 1000)
+                });
+                
+                if (confirm('⚠️ WAIT! Your special $197 price expires when you leave this page. After that it\'s $497 forever. Stay and save $300?')) {
+                    // User stayed
+                    gtag('event', 'exit_intent_saved', {
+                        'action': 'stayed',
+                        'potential_value': 197
+                    });
+                } else {
+                    // User leaving
+                    gtag('event', 'exit_intent_lost', {
+                        'action': 'left',
+                        'lost_value': 197
+                    });
+                }
+            }
+        });
+
+        // Track scroll depth on thank you page
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                
+                if (maxScroll >= 25 && maxScroll < 26) {
+                    gtag('event', 'scroll', {
+                        'percent_scrolled': 25,
+                        'page_section': 'next_steps'
+                    });
+                }
+                
+                if (maxScroll >= 50 && maxScroll < 51) {
+                    gtag('event', 'scroll', {
+                        'percent_scrolled': 50,
+                        'page_section': 'upsell_intro'
+                    });
+                }
+                
+                if (maxScroll >= 75 && maxScroll < 76) {
+                    gtag('event', 'scroll', {
+                        'percent_scrolled': 75,
+                        'page_section': 'upsell_comparison'
+                    });
+                }
+                
+                if (maxScroll >= 90) {
+                    gtag('event', 'scroll', {
+                        'percent_scrolled': 100,
+                        'page_section': 'full_page_viewed',
+                        'high_intent': true
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
