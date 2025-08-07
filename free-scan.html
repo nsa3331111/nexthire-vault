@@ -317,6 +317,25 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -341,14 +360,32 @@
                 <div class="benefit">✅ Works for all tech roles (SWE, PM, Designer, etc.)</div>
             </div>
 
-            <form id="lead-form" class="lead-form">
-                <input type="email" name="email" placeholder="Enter your work email" required>
-                <input type="text" name="role" placeholder="Your target role (e.g., Software Engineer)" required>
-                <input type="text" name="experience" placeholder="Years of experience" required>
-                <button type="submit" id="submit-btn">
+            <!-- Updated Mailchimp Form with your actual details -->
+            <form id="lead-form" class="lead-form" action="https://app.us4.list-manage.com/subscribe/post" method="post" name="mc-embedded-subscribe-form">
+                <!-- Hidden fields for your Mailchimp list -->
+                <input type="hidden" name="u" value="83cc0e7527b401594e2ea12bd">
+                <input type="hidden" name="id" value="9156744499">
+                
+                <!-- Form fields mapped to your Mailchimp fields -->
+                <input type="email" name="MERGE0" placeholder="Enter your work email" required>
+                <input type="text" name="MERGE1" placeholder="Your first name" required>
+                <input type="text" name="MERGE2" placeholder="Your last name" required>
+                
+                <!-- Honeypot field to prevent bot submissions -->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_83cc0e7527b401594e2ea12bd_9156744499" tabindex="-1" value="">
+                </div>
+                
+                <button type="submit" name="subscribe" id="submit-btn">
                     Get Free Scan Now
                 </button>
             </form>
+
+            <!-- Success message -->
+            <div id="success-message" class="success-message">
+                <h3 style="color: #10b981; margin-bottom: 1rem;">📧 Success! Check Your Email</h3>
+                <p>Your ATS scan results are being processed and will arrive in your inbox within 2 minutes. Don't forget to check your spam folder!</p>
+            </div>
             
             <p class="guarantee">📧 Instant delivery • No spam • 100% free • Used by FAANG professionals</p>
 
@@ -373,57 +410,35 @@
     </div>
 
     <script>
-        // Form submission handling
+        // Enhanced form submission handling for Mailchimp
         document.getElementById('lead-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const form = this;
             const submitBtn = document.getElementById('submit-btn');
-            const formData = new FormData(form);
+            const successMessage = document.getElementById('success-message');
             
             // Add loading state
             form.classList.add('loading');
             submitBtn.textContent = 'Processing...';
             
-            // Collect form data
-            const leadData = {
-                email: formData.get('email'),
-                role: formData.get('role'),
-                experience: formData.get('experience'),
-                timestamp: new Date().toISOString(),
-                source: 'free_scan_landing_page',
-                user_agent: navigator.userAgent
-            };
-            
             // Track lead capture
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'generate_lead', {
                     'currency': 'USD',
-                    'value': 97, // Value of free scan
+                    'value': 97,
                     'lead_source': 'free_scan_page'
                 });
             }
-            
-            // Store lead data locally (for demo purposes)
-            try {
-                const existingLeads = JSON.parse(localStorage.getItem('nexthire_leads') || '[]');
-                existingLeads.push(leadData);
-                localStorage.setItem('nexthire_leads', JSON.stringify(existingLeads));
-            } catch (error) {
-                console.log('Could not store lead data locally');
-            }
-            
-            // Simulate processing time
+
+            // For fallback success handling (since Mailchimp redirects)
             setTimeout(() => {
-                // Redirect to success page with scan results
-                window.location.href = 'scan-results.html?' + new URLSearchParams({
-                    email: leadData.email,
-                    role: leadData.role,
-                    experience: leadData.experience
-                }).toString();
-            }, 2000);
+                // Show success message if still on page
+                if (!document.hidden) {
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                }
+            }, 3000);
             
-            console.log('📧 Lead captured:', leadData);
+            console.log('📧 Mailchimp form submitted');
         });
 
         // Track page engagement
@@ -462,7 +477,7 @@
         observer.observe(benefitsList);
 
         // Track form field interactions
-        const formInputs = document.querySelectorAll('#lead-form input');
+        const formInputs = document.querySelectorAll('#lead-form input[type="email"], #lead-form input[type="text"]');
         formInputs.forEach((input, index) => {
             input.addEventListener('focus', () => {
                 if (typeof gtag !== 'undefined') {
@@ -474,31 +489,7 @@
             });
         });
 
-        // Track page exit without conversion
-        window.addEventListener('beforeunload', function() {
-            const timeSpent = Math.round((Date.now() - timeOnPage) / 1000);
-            
-            if (!formViewed) {
-                // User left without seeing form
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'early_exit', {
-                        'time_spent': timeSpent,
-                        'page': 'free_scan',
-                        'form_viewed': false
-                    });
-                }
-            } else if (formViewed && timeSpent > 10) {
-                // User saw form but didn't convert
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_abandonment', {
-                        'time_spent': timeSpent,
-                        'page': 'free_scan'
-                    });
-                }
-            }
-        });
-
-        console.log('📊 Free ATS Scan page loaded - tracking conversions');
+        console.log('📊 Free ATS Scan page loaded - Mailchimp integration active');
     </script>
 </body>
 </html>
