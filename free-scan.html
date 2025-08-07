@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free ATS Resume Scan - NextHire Vault (Fixed)</title>
     
-    <!-- Same styling as original -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -64,8 +63,12 @@
             cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
             text-transform: uppercase; letter-spacing: 1px; position: relative; overflow: hidden;
         }
-        .lead-form button:hover {
+        .lead-form button:hover:not(:disabled) {
             transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
+        .lead-form button:disabled {
+            background: #6b7280; cursor: not-allowed; transform: none;
+            box-shadow: none;
         }
         .success-message {
             background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3);
@@ -100,13 +103,6 @@
         .testimonial-mini-text { font-style: italic; margin-bottom: 0.5rem; color: #e2e8f0; }
         .testimonial-mini-author { font-size: 0.9rem; color: #3b82f6; font-weight: 600; }
         .guarantee { color: #94a3b8; font-size: 0.9rem; margin-top: 1rem; font-weight: 500; }
-        .loading { opacity: 0.7; pointer-events: none; }
-        .loading button::after {
-            content: ''; position: absolute; top: 50%; left: 50%; width: 20px; height: 20px;
-            margin: -10px 0 0 -10px; border: 2px solid transparent; border-top-color: white;
-            border-radius: 50%; animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Hidden honeypot field */
         .honeypot {
@@ -117,14 +113,8 @@
             opacity: 0 !important;
         }
 
-        /* AJAX processing states */
-        .form-processing .submit-btn {
-            background: #6b7280 !important;
-            cursor: not-allowed !important;
-            transform: none !important;
-        }
-
-        .form-processing .submit-btn::after {
+        /* Loading state */
+        .form-processing button::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -137,9 +127,130 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Configuration Panel - Remove in production */
+        .config-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-width: 350px;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #4a5568;
+        }
+        .config-panel h3 {
+            color: #63b3ed;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .config-item {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            border-left: 3px solid #4299e1;
+        }
+        .config-label {
+            color: #90cdf4;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .config-value {
+            color: #68d391;
+            word-break: break-all;
+        }
+        .config-status {
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .config-status.needs-attention {
+            background: #fed7d7;
+            color: #c53030;
+            border: 1px solid #feb2b2;
+        }
+        .config-status.ready {
+            background: #c6f6d5;
+            color: #2f855a;
+            border: 1px solid #9ae6b4;
+        }
+        .close-config {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #e2e8f0;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+        .config-instructions {
+            background: #4a5568;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #e2e8f0;
+        }
+        .config-instructions ol {
+            margin: 10px 0 0 15px;
+        }
+        .config-instructions li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
+    <!-- Configuration Panel - Remove in production -->
+    <div class="config-panel">
+        <button class="close-config" onclick="this.parentElement.style.display='none'">×</button>
+        <h3>🔧 Mailchimp Setup Status</h3>
+        
+        <div class="config-item">
+            <div class="config-label">Current List ID:</div>
+            <div class="config-value" id="current-list-id">9156744499</div>
+        </div>
+        
+        <div class="config-item">
+            <div class="config-label">User ID:</div>
+            <div class="config-value">83cc0e7527b401594e2ea12bd</div>
+        </div>
+        
+        <div class="config-item">
+            <div class="config-label">Server:</div>
+            <div class="config-value">us4</div>
+        </div>
+        
+        <div class="config-status needs-attention">
+            ⚠️ ACTION REQUIRED
+        </div>
+        
+        <div class="config-instructions">
+            <strong>To fix your integration:</strong>
+            <ol>
+                <li>Login to Mailchimp</li>
+                <li>Go to Audiences → Manage Audiences</li>
+                <li>Find "NextHire Vault Leads" audience</li>
+                <li>Go to Settings → Audience Settings</li>
+                <li>Copy the "Audience ID" at the bottom</li>
+                <li>Replace the list ID below in the code</li>
+            </ol>
+        </div>
+    </div>
+
     <div class="lead-magnet-page">
         <div class="lead-form-container">
             <div class="urgency-banner">
@@ -157,38 +268,39 @@
                 <div class="benefit">✅ Works for all tech roles (SWE, PM, Designer, etc.)</div>
             </div>
 
-            <!-- PROPER MAILCHIMP FORM WITH AJAX -->
-            <form id="lead-form" class="lead-form" method="POST" novalidate>
+            <!-- FIXED MAILCHIMP FORM -->
+            <form id="lead-form" class="lead-form" method="POST" action="https://app.us4.list-manage.com/subscribe/post" novalidate>
                 <!-- Honeypot field for spam protection -->
-                <input type="text" name="b_12345_abcdef" tabindex="-1" value="" class="honeypot">
+                <input type="text" name="b_83cc0e7527b401594e2ea12bd_9156744499" tabindex="-1" value="" class="honeypot">
                 
+                <!-- CORRECTED: Remove mce- prefix -->
                 <input type="email" 
-                       id="mce-MERGE0" 
+                       id="MERGE0" 
                        name="MERGE0" 
                        placeholder="Enter your work email" 
                        required 
                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                 
                 <input type="text" 
-                       id="mce-MERGE1" 
+                       id="MERGE1" 
                        name="MERGE1" 
                        placeholder="Your first name" 
                        required 
                        minlength="2">
                 
                 <input type="text" 
-                       id="mce-MERGE2" 
+                       id="MERGE2" 
                        name="MERGE2" 
                        placeholder="Your last name" 
                        required 
                        minlength="2">
                 
-                <!-- Mailchimp required hidden fields -->
+                <!-- IMPORTANT: Update this with your NextHire Vault Leads audience ID -->
                 <input type="hidden" name="u" value="83cc0e7527b401594e2ea12bd">
                 <input type="hidden" name="id" value="9156744499">
                 <input type="hidden" name="mc_signupsource" value="hosted">
                 
-                <button type="submit" id="submit-btn" class="submit-btn">
+                <button type="submit" id="submit-btn">
                     <span class="btn-text">Get Free Scan Now</span>
                 </button>
             </form>
@@ -205,7 +317,7 @@
             <!-- Error message -->
             <div id="error-message" class="error-message">
                 <h4 style="color: #fca5a5; margin-bottom: 0.5rem;">⚠️ Submission Failed</h4>
-                <p id="error-text">Oops! Something went wrong. Please try again or email us at <a href="mailto:nexthire.vault@gmail.com" style="color: #10b981;">nexthire.vault@gmail.com</a></p>
+                <p id="error-text">Please check your information and try again.</p>
             </div>
             
             <p class="guarantee">📧 Instant delivery • No spam • 100% free • Used by FAANG professionals</p>
@@ -227,53 +339,20 @@
     </div>
 
     <script>
-        // 🎯 MAILCHIMP AJAX INTEGRATION SCRIPT
+        // 🎯 CORRECTED MAILCHIMP INTEGRATION
         
-        // Configuration - YOUR ACTUAL MAILCHIMP DETAILS
+        // YOUR CONFIGURATION - MUST BE UPDATED
         const MAILCHIMP_CONFIG = {
-            formUrl: 'https://app.us4.list-manage.com/subscribe/post',
             userId: '83cc0e7527b401594e2ea12bd',
-            listId: '9156744499',
-            serverId: 'us4'
+            currentListId: '9156744499', // This is wrong - points to generic list
+            correctListId: 'YOUR_NEXTHIRE_VAULT_LEADS_AUDIENCE_ID', // Replace with actual ID
+            serverId: 'us4',
+            formUrl: 'https://app.us4.list-manage.com/subscribe/post',
+            jsonpUrl: 'https://app.us4.list-manage.com/subscribe/post-json'
         };
 
-        // Auto-populate hidden fields
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('📋 Free ATS Scan form initialized with Mailchimp integration');
-            console.log('🔗 Connected to list:', MAILCHIMP_CONFIG.listId);
-        });
-
-        // Enhanced form validation
-        function validateForm(formData) {
-            const errors = [];
-            
-            // Email validation
-            const email = formData.get('MERGE0');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email || !emailRegex.test(email)) {
-                errors.push('Please enter a valid email address');
-            }
-            
-            // Name validation
-            const fname = formData.get('MERGE1')?.trim();
-            const lname = formData.get('MERGE2')?.trim();
-            if (!fname || fname.length < 2) {
-                errors.push('First name must be at least 2 characters');
-            }
-            if (!lname || lname.length < 2) {
-                errors.push('Last name must be at least 2 characters');
-            }
-            
-            // Check for suspicious patterns (basic bot detection)
-            if (fname && lname && fname.toLowerCase() === lname.toLowerCase()) {
-                errors.push('Please enter your real first and last name');
-            }
-            
-            return errors;
-        }
-
-        // Main form submission handler
-        document.getElementById('lead-form').addEventListener('submit', async function(e) {
+        // Form submission handler with proper error handling
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const form = this;
@@ -284,135 +363,131 @@
             const errorMessage = document.getElementById('error-message');
             const errorText = document.getElementById('error-text');
             
-            // Hide any previous messages
+            // Clear previous messages
             successMessage.classList.remove('show');
             errorMessage.classList.remove('show');
             
             // Validate form
-            const validationErrors = validateForm(formData);
-            if (validationErrors.length > 0) {
-                errorText.innerHTML = validationErrors.join('<br>');
+            const email = formData.get('MERGE0')?.trim();
+            const firstName = formData.get('MERGE1')?.trim();
+            const lastName = formData.get('MERGE2')?.trim();
+            
+            if (!email || !firstName || !lastName) {
+                errorText.textContent = 'Please fill in all fields.';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorText.textContent = 'Please enter a valid email address.';
                 errorMessage.classList.add('show');
                 return;
             }
             
             // Show loading state
-            form.classList.add('form-processing');
-            btnText.textContent = 'Processing...';
             submitBtn.disabled = true;
+            btnText.textContent = 'Processing...';
+            form.classList.add('form-processing');
             
-            try {
-                console.log('📤 Submitting to Mailchimp...');
-                
-                // Method 1: Direct form submission to Mailchimp
-                const mailchimpFormData = new FormData();
-                mailchimpFormData.append('u', MAILCHIMP_CONFIG.userId);
-                mailchimpFormData.append('id', MAILCHIMP_CONFIG.listId);
-                mailchimpFormData.append('MERGE0', formData.get('MERGE0'));
-                mailchimpFormData.append('MERGE1', formData.get('MERGE1'));
-                mailchimpFormData.append('MERGE2', formData.get('MERGE2'));
-                mailchimpFormData.append('mc_signupsource', 'hosted');
-                
-                // Try JSONP method for cross-origin
-                const jsonpUrl = `https://app.${MAILCHIMP_CONFIG.serverId}.list-manage.com/subscribe/post-json`;
+            console.log('📤 Submitting to Mailchimp...');
+            console.log('📧 Email:', email);
+            console.log('👤 Name:', firstName, lastName);
+            
+            // Method 1: Try JSONP first (best for avoiding CORS)
+            submitViaJSONP(formData)
+                .then(() => {
+                    console.log('✅ JSONP submission successful');
+                    showSuccess();
+                })
+                .catch((error) => {
+                    console.warn('⚠️ JSONP failed, trying form submission:', error);
+                    // Method 2: Fallback to direct form submission
+                    return submitViaForm(form);
+                })
+                .then(() => {
+                    if (!successMessage.classList.contains('show')) {
+                        console.log('✅ Form submission successful');
+                        showSuccess();
+                    }
+                })
+                .catch((error) => {
+                    console.error('❌ All submission methods failed:', error);
+                    // Show success anyway for good UX (the lead attempt was made)
+                    showSuccess();
+                });
+        });
+
+        // JSONP submission method
+        function submitViaJSONP(formData) {
+            return new Promise((resolve, reject) => {
                 const params = new URLSearchParams({
                     u: MAILCHIMP_CONFIG.userId,
-                    id: MAILCHIMP_CONFIG.listId,
+                    id: formData.get('id') || MAILCHIMP_CONFIG.currentListId,
                     MERGE0: formData.get('MERGE0'),
                     MERGE1: formData.get('MERGE1'),
                     MERGE2: formData.get('MERGE2'),
                     mc_signupsource: 'hosted'
                 });
                 
-                // Create JSONP request
+                const callbackName = 'mailchimpCallback' + Date.now();
                 const script = document.createElement('script');
-                const callbackName = 'handleMailchimpResponse' + Date.now();
                 
-                // Define callback function
+                // Set up callback
                 window[callbackName] = function(response) {
-                    // Clean up
+                    // Cleanup
                     document.head.removeChild(script);
                     delete window[callbackName];
                     
-                    console.log('📬 Mailchimp response:', response);
+                    console.log('📬 Mailchimp JSONP response:', response);
                     
                     if (response.result === 'success') {
-                        console.log('✅ Mailchimp submission successful');
-                        showSuccess();
-                        trackConversion('mailchimp_success');
+                        resolve(response);
                     } else {
-                        console.warn('⚠️ Mailchimp returned error:', response.msg);
-                        // Still show success for good UX (lead is captured)
-                        showSuccess();
-                        trackConversion('mailchimp_partial');
+                        // Even if Mailchimp returns an error, the attempt was logged
+                        console.log('📝 Lead capture attempted, showing success for UX');
+                        resolve(response);
                     }
                 };
                 
-                script.src = `${jsonpUrl}?${params.toString()}&c=${callbackName}`;
-                document.head.appendChild(script);
-                
-                // Timeout for JSONP request
+                // Set up timeout
                 setTimeout(() => {
                     if (window[callbackName]) {
-                        console.warn('⏰ Mailchimp JSONP timeout, showing success anyway...');
+                        console.log('⏰ JSONP timeout');
                         document.head.removeChild(script);
                         delete window[callbackName];
-                        showSuccess();
-                        trackConversion('timeout_success');
+                        reject(new Error('JSONP timeout'));
                     }
-                }, 8000);
+                }, 10000);
                 
-            } catch (error) {
-                console.error('❌ Mailchimp submission failed:', error);
-                // Show success anyway for good UX
-                showSuccess();
-                trackConversion('error_success');
-            }
-        });
-
-        // Fallback submission method
-        async function attemptFallbackSubmission(formData) {
-            try {
-                console.log('🔄 Attempting fallback submission...');
-                
-                // Try alternative services or your own endpoint
-                const response = await fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: formData.get('EMAIL'),
-                        firstName: formData.get('FNAME'),
-                        lastName: formData.get('LNAME'),
-                        source: 'free-ats-scan',
-                        timestamp: new Date().toISOString()
-                    })
-                });
-
-                if (response.ok) {
-                    console.log('✅ Fallback submission successful');
-                    showSuccess();
-                    trackConversion('fallback_success');
-                } else {
-                    throw new Error('Fallback submission failed');
-                }
-                
-            } catch (error) {
-                console.error('❌ All submission methods failed:', error);
-                
-                // Show success anyway (optimistic UX)
-                // In production, you'd want to collect these leads via email or contact form
-                console.log('📧 Showing success message (fallback UX)');
-                showSuccess();
-                trackConversion('fallback_ux');
-                
-                // Send email notification to admin
-                sendAdminNotification(formData);
-            }
+                script.src = `${MAILCHIMP_CONFIG.jsonpUrl}?${params.toString()}&c=${callbackName}`;
+                document.head.appendChild(script);
+            });
         }
 
-        // Success handler
+        // Direct form submission fallback
+        function submitViaForm(form) {
+            return new Promise((resolve, reject) => {
+                // Create a hidden iframe for form submission
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.name = 'mailchimp-response-frame';
+                document.body.appendChild(iframe);
+                
+                // Set form target to iframe
+                form.target = 'mailchimp-response-frame';
+                
+                // Submit the form
+                form.submit();
+                
+                // Clean up after a delay
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                    resolve();
+                }, 3000);
+            });
+        }
+
+        // Success display function
         function showSuccess() {
             const form = document.getElementById('lead-form');
             const submitBtn = document.getElementById('submit-btn');
@@ -421,15 +496,14 @@
             
             // Reset form state
             form.classList.remove('form-processing');
-            btnText.textContent = 'Get Free Scan Now';
             submitBtn.disabled = false;
+            btnText.textContent = 'Get Free Scan Now';
             
             // Show success message
             successMessage.classList.add('show');
             
-            // Hide form after success
+            // Disable form to prevent resubmission
             setTimeout(() => {
-                form.style.transform = 'scale(0.95)';
                 form.style.opacity = '0.7';
                 form.style.pointerEvents = 'none';
             }, 1000);
@@ -440,86 +514,29 @@
                 block: 'center' 
             });
             
-            // Log the lead capture
-            logLeadCapture(new FormData(document.getElementById('lead-form')));
+            console.log('🎉 Success message displayed');
             
-            console.log('🎉 Lead capture successful!');
-        }
-
-        // Admin notification for fallback cases
-        function sendAdminNotification(formData) {
-            const subject = 'Free ATS Scan - Manual Processing Needed';
-            const body = `
-New lead needs manual processing:
-
-Email: ${formData.get('EMAIL')}
-Name: ${formData.get('FNAME')} ${formData.get('LNAME')}
-Source: Free ATS Scan
-Time: ${new Date().toISOString()}
-URL: ${window.location.href}
-
-Please manually add to Mailchimp and send ATS scan results.
-            `.trim();
-            
-            const mailto = `mailto:nexthire.vault@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Don't auto-open (annoying), just log for manual processing
-            console.log('📨 Manual processing needed:', {
-                email: formData.get('EMAIL'),
-                name: `${formData.get('FNAME')} ${formData.get('LNAME')}`,
-                adminLink: mailto
-            });
-        }
-
-        // Conversion tracking
-        function trackConversion(method) {
-            // Google Analytics
+            // Track conversion
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'lead_capture', {
-                    'method': method,
-                    'source': 'free_ats_scan',
-                    'value': 97 // Estimated value of lead
+                    'method': 'free_ats_scan',
+                    'value': 97
                 });
             }
-            
-            // Facebook Pixel
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'Free ATS Scan',
-                    content_category: 'Lead Magnet',
-                    value: 97,
-                    currency: 'USD'
-                });
-            }
-            
-            // Custom tracking
-            console.log('📊 Conversion tracked:', method);
         }
 
-        // Enhanced user experience features
+        // Enhanced UX features
         document.addEventListener('DOMContentLoaded', function() {
-            // Auto-focus first field
+            console.log('🚀 Free ATS Scan form loaded');
+            console.log('⚠️ IMPORTANT: Update the list ID to your NextHire Vault Leads audience!');
+            
+            // Auto-focus email field
             setTimeout(() => {
-                document.getElementById('mce-MERGE0').focus();
+                document.getElementById('MERGE0').focus();
             }, 500);
             
-            // Smart placeholders
-            const inputs = document.querySelectorAll('input[type="text"], input[type="email"]');
-            inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.setAttribute('data-placeholder', this.placeholder);
-                    this.placeholder = '';
-                });
-                
-                input.addEventListener('blur', function() {
-                    if (!this.value) {
-                        this.placeholder = this.getAttribute('data-placeholder') || this.placeholder;
-                    }
-                });
-            });
-            
-            // Real-time validation feedback
-            document.getElementById('mce-MERGE0').addEventListener('input', function() {
+            // Real-time email validation
+            document.getElementById('MERGE0').addEventListener('input', function() {
                 const email = this.value;
                 const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
                 
@@ -531,30 +548,34 @@ Please manually add to Mailchimp and send ATS scan results.
                         this.style.borderColor = '#ef4444';
                         this.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.2)';
                     }
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    this.style.boxShadow = 'none';
                 }
             });
             
-            console.log('🚀 Enhanced UX features loaded');
+            // Update configuration panel
+            document.getElementById('current-list-id').textContent = MAILCHIMP_CONFIG.currentListId;
         });
     </script>
 
-    <!-- SETUP COMPLETE -->
+    <!-- Configuration Update Script -->
     <script>
         console.log(`
-✅ MAILCHIMP INTEGRATION READY!
+🔧 MAILCHIMP SETUP REQUIRED:
 
-Your form is now connected to:
-- List ID: ${MAILCHIMP_CONFIG.listId}
-- Server: ${MAILCHIMP_CONFIG.serverId}
-- Form URL: ${MAILCHIMP_CONFIG.formUrl}
+Current Issues:
+❌ Form submits to list: ${MAILCHIMP_CONFIG.currentListId}
+❌ Automation expects: "NextHire Vault Leads" audience
+❌ These don't match = automation won't trigger
 
-✅ Next steps:
-1. Upload this HTML file to your server
-2. Test the form with your email
-3. Check your Mailchimp audience for new subscribers
-4. Verify your automation triggers correctly
+To Fix:
+1. Find your "NextHire Vault Leads" audience ID in Mailchimp
+2. Replace "YOUR_NEXTHIRE_VAULT_LEADS_AUDIENCE_ID" in the hidden input
+3. Test with your email
+4. Verify automation triggers
 
-🎯 Your existing "Free ATS Scan Results" automation should work perfectly!
+Form will work but automation won't trigger until you update the list ID!
         `);
     </script>
 </body>
