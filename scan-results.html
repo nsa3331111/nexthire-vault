@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your CareerLift rejection report is ready. See your score and get instant fixes.">
+  <title>CareerLift – Your Rejection Report</title>
+  <link rel="canonical" href="https://getcareerlift.com/scan-results">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-badge"><span>CL</span></div>
+      <div>CareerLift <span class="badge">Beta</span></div>
+    </div>
+    <nav class="nav" role="navigation">
+      <a href="index.html" class="btn btn-ghost">Home</a>
+      <a href="free-scan.html" class="btn btn-ghost">Run Another Scan</a>
+      <button class="btn btn-primary" data-pay="express">Fix Now – $37</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="resultsWrap" class="grid-2">
+      <div class="card">
+        <h1>Your Rejection Report</h1>
+        <div class="hr"></div>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="small">Fit Score</div>
+            <div class="num" id="fitScore">—</div>
+            <div class="progress"><span id="barFit"></span></div>
+          </div>
+          <div class="kpi">
+            <div class="small">ATS Match</div>
+            <div class="progress"><span id="barATS"></span></div>
+            <div class="small">+41% possible with fixes</div>
+          </div>
+          <div class="kpi">
+            <div class="small">Format Score</div>
+            <div class="progress"><span id="barFormat"></span></div>
+            <div class="small">Tables & columns reduce matches</div>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <p class="small">Auto-deleted at <strong id="rejectTime">—</strong>. <span id="rankLine"></span></p>
+        <div class="notice">
+          <strong>Top 3 quick fixes:</strong>
+          <ul id="missingList" class="small" style="margin:8px 0 0 0"></ul>
+        </div>
+        <div class="cta-row">
+          <button class="btn btn-primary" data-pay="express">Fix Now – $37</button>
+          <button class="btn btn-ghost" data-pay="basic">DIY Pack – $27</button>
+        </div>
+        <p class="small">We'll send your upgraded pack to <strong id="emailEcho"></strong> in ~30 minutes.</p>
+      </div>
+
+      <aside class="card">
+        <h2>Your "After" Preview</h2>
+        <div class="hr"></div>
+        <div class="form-row">
+          <div class="small">Projected Score After Fix</div>
+          <div class="progress"><span id="barAfter"></span></div>
+          <div class="small"><strong id="afterScore">—</strong> / 100 • Interview threshold: 85</div>
+        </div>
+        <div class="hr"></div>
+        <h3>Today's Interview Winners</h3>
+        <div id="leaderboard" class="leaderboard"></div>
+        <div class="hr"></div>
+        <div class="notice small">
+          Interview guarantee (Elite): if no callback in 7 days, we keep fixing it free.
+        </div>
+        <div class="cta-row">
+          <button class="btn btn-success" data-pay="elite">Upgrade to Elite – $97</button>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer center">
+    © <span id="yr"></span> CareerLift. <a href="index.html">Back to Home</a>
+  </footer>
+</div>
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

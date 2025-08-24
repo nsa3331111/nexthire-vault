@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Get your free ATS rejection report. See why recruiters skip your resume and how to fix it.">
+  <title>CareerLift – Free Resume Rejection Scan</title>
+  <link rel="canonical" href="https://getcareerlift.com/free-scan">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-badge"><span>CL</span></div>
+      <div>CareerLift <span class="badge">Beta</span></div>
+    </div>
+    <nav class="nav" role="navigation">
+      <a href="index.html" class="btn btn-ghost">Home</a>
+      <a href="free-scan.html" class="btn btn-primary">Free Scan</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="grid-2">
+      <div class="card">
+        <h1 class="h1" style="font-size:32px">Get your free Rejection Report</h1>
+        <p class="sub">Paste your resume and the job description. We'll show your rejection time, rank, and the 3 fastest fixes.</p>
+        <form id="freeScanForm" class="form">
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" placeholder="you@email.com" required aria-required="true">
+          </div>
+          <div class="form-row">
+            <label for="resume">Resume (paste text)</label>
+            <textarea id="resume" placeholder="Paste your resume text here..." required aria-required="true"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="job">Job description / link (paste)</label>
+            <textarea id="job" placeholder="Paste the job description text here..." required aria-required="true"></textarea>
+          </div>
+          <div class="cta-row">
+            <button class="btn btn-primary" type="submit">See My Rejection Time</button>
+            <a href="index.html#pricing" class="btn btn-ghost">Skip to pricing</a>
+          </div>
+          <p class="small">Private & secure. We never sell your data. Delete any time.</p>
+        </form>
+      </div>
+      <aside class="card">
+        <h2>What you'll see</h2>
+        <div class="hr"></div>
+        <ul class="small">
+          <li>❌ Auto-deleted at <strong>3.9 seconds</strong> – Reason: missing "Python" in first 50 words</li>
+          <li>📊 Rank: <strong>#89 of 147</strong> candidates • Top 20 get human review</li>
+          <li>⚡ 3 fixes to jump into the interview pile</li>
+        </ul>
+        <div class="hr"></div>
+        <div class="notice small">Want the full fix? Checkout takes 20 seconds. Delivery in 30 minutes.</div>
+      </aside>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+</body>
+</html>

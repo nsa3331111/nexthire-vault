@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Payment successful. Your CareerLift upgrade pack is being prepared.">
+  <title>CareerLift – Payment Successful</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+<div class="container center">
+  <div class="card" style="max-width:720px;margin:40px auto;">
+    <div class="logo" style="justify-content:center;margin-bottom:8px;">
+      <div class="logo-badge"><span>CL</span></div>
+      <div>CareerLift</div>
+    </div>
+    <h1>Payment received ✅</h1>
+    <p class="sub">We're preparing your upgrade pack. It will arrive at <strong id="emailEcho">your email</strong> within ~30 minutes.</p>
+    <div class="hr"></div>
+    <h2 class="small">What to do now:</h2>
+    <ul class="small" style="text-align:left;display:inline-block">
+      <li>Keep an eye on your inbox (and spam folder)</li>
+      <li>Reply to the email if the target job link changes</li>
+      <li>Join our leaderboard by sharing your new score badge</li>
+    </ul>
+    <div class="cta-row" style="justify-content:center">
+      <a href="scan-results.html" class="btn btn-ghost">Back to results</a>
+      <a href="index.html" class="btn btn-primary">Return Home</a>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast" role="alert" aria-live="polite"></div>
+<script>
+document.querySelector("#emailEcho").textContent = localStorage.getItem("cl_email") || "your email";
+</script>
+</body>
+</html>
